@@ -21,7 +21,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-    private List<Book> itemViews = new ArrayList<>();
+    private ArrayList<Book> itemViews = new ArrayList<>();
     BookCollection bookCollection = new BookCollection();
     ListView listView;
     ListViewAdapter listViewAdapter;
@@ -113,19 +113,20 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
-    }
 
+    }
     public void Initialize(){
         Book book = new Book();
         book.setName("test");
         book.setAuthor("testAuthor");
         book.setPublishing_house("testpublisher");
         book.setPublishing_time("testtime");
-        //bookCollection.save(MainActivity.this,book);
 
-        //itemViews = bookCollection.read(MainActivity.this);
         itemViews.add(book);
-        itemViews.add(book);
+        if(bookCollection.save(MainActivity.this.getBaseContext(),itemViews))
+            Toast.makeText(MainActivity.this,"save sucess",Toast.LENGTH_SHORT).show();
+        itemViews = bookCollection.read(getBaseContext());
+        //itemViews.add(book);
 
         listViewAdapter.notifyDataSetChanged();     //不用这一句也能正常运行，可删
     }

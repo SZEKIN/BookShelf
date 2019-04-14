@@ -19,10 +19,10 @@ import java.util.List;
  */
 
 public class ListViewAdapter extends BaseAdapter {
-    private List<Book> itemViews = new ArrayList<>();
+    private ArrayList<Book> itemViews;
     Context context;
 
-    public ListViewAdapter(Context context,List<Book> itemViews){
+    public ListViewAdapter(Context context,ArrayList<Book> itemViews){
         this.context = context;
         this.itemViews = itemViews;
     }
