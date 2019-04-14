@@ -61,6 +61,6 @@ public class ListViewAdapter extends BaseAdapter {
         viewHolder.BookName.setText(book.getName());
         viewHolder.BookAuthorAndPublishingHouse.setText(book.getAuthor() + "," + book.getPublishing_house());
         return convertView;
-
+        //123
     }
 }
